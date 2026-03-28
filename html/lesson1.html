@@ -60,7 +60,7 @@ body {
     flex-shrink: 0;
 }
 
-.controls button {
+button {
     padding: 6px 14px;
     background: #1a1a1a;
     color: var(--text);
@@ -72,7 +72,7 @@ body {
     transition: background 0.15s, border-color 0.15s;
 }
 
-.controls button:hover {
+button:hover {
     background: #2a2a2a;
     border-color: #444;
 }
@@ -138,6 +138,8 @@ body {
 .cm-s-stufy .cm-operator   { color: #56b6c2; }
 .cm-s-stufy .cm-builtin    { color: #e5c07b; }
 .cm-s-stufy .cm-qualifier  { color: #d19a66; }
+
+
 
 .right {
     flex: 1;
@@ -275,12 +277,13 @@ p.tab-explain { margin-bottom: 12px; display: block; }
             programming language and do <strong>NOT</strong> get seen by the user. In HTML, comments are in the format:
             <pre><code>&lt;!-- Hello! --&gt;</code></pre>
             Where 'Hello' can be replaced with your comment. An example of a comment is on the left &mdash; in both
-            the <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> tags are examples of comments.
+            the &lt;head&gt; and &lt;body&gt; tags are examples of comments.<br><br>
             Now, if you switch to the Preview tab you can see that the comments aren't rendered. This is because
             comments are only for developers to make notes on their code &mdash; so if it gets complicated, you can easily
-            keep track of what does what. Comments can also be inline. For example:
+            keep track of what does what.<br><br>Comments can also be inline. For example:
             <pre><code>&lt;div&gt;&lt;!-- Hello! --&gt;&lt;/div&gt;</code></pre>
             <br>
+            Try writing a comment yourself in the code editor and check if it renders. If it does, you did something wrong and read this again. Once you have done this, read more.<br><br>
             Now, you need to learn the basic HTML syntax.<br><br>
 
             <strong>Syntax</strong><br>
@@ -290,7 +293,11 @@ p.tab-explain { margin-bottom: 12px; display: block; }
                 <li><code>&lt;br&gt;</code> doesn't need an end tag &mdash; it's a self-closing element.</li>
                 <li>Any items between the two tags are <em>'nested'</em> inside of the element.</li>
             </ol>
+            And thats all!
             </p>
+            <div>
+                <button style="display:inline-block;margin-right:5px;width:48%;" id="lessonprev">Previous Lesson</button><button style="display:inline-block;margin-right:5px;width:48%;" id="lessonnext">Next Lesson</button>
+            </div>
         </div>
 
         <div class="tab-panel" id="preview">
@@ -382,6 +389,54 @@ saveBtn.addEventListener('click', () => {
 
 
 renderPreview();
+
+const path = window.location.pathname;
+const file = path.substring(path.lastIndexOf("/") + 1);
+
+// Extract lesson number
+const match = file.match(/lesson(\d+)/);
+
+if (match) {
+    const lessonNum = parseInt(match[1]);
+
+    const prevBtn = document.getElementById("lessonPrev");
+    const nextBtn = document.getElementById("lessonNext");
+
+    const prevPage = `lesson${lessonNum - 1}.html`;
+    const nextPage = `lesson${lessonNum + 1}.html`;
+
+    // Function to check if page exists (GET request)
+    async function pageExists(url) {
+        try {
+            const res = await fetch(url, { method: "GET" });
+            return res.ok;
+        } catch {
+            return false;
+        }
+    }
+
+    // Previous button
+    if (lessonNum > 1) {
+        pageExists(prevPage).then(exists => {
+            if (exists) {
+                prevBtn.onclick = () => window.location.href = prevPage;
+            } else {
+                prevBtn.disabled = true;
+            }
+        });
+    } else {
+        prevBtn.disabled = true;
+    }
+
+    // Next button
+    pageExists(nextPage).then(exists => {
+        if (exists) {
+            nextBtn.onclick = () => window.location.href = nextPage;
+        } else {
+            nextBtn.disabled = true;
+        }
+    });
+}
 </script>
 </body>
 </html>
