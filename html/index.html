@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+
+        * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        }
+
+        html {
+        scroll-behavior: smooth;
+        }
+
+        body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        font-size: 20px;
+        color: #ffffff;
+        background-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(25, 26, 39));
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        min-height: 100vh;
+        text-align: center;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+        color: #ffffff;
+        font-weight: 400;
+        }
+
+        ul {
+        list-style: none;
+        }
+
+        a {
+        text-decoration: none;
+        }
+
+        img {
+        max-width: 100%;
+        height: auto;
+        }
+
+        .section {
+        min-height: 100vh;
+        padding: 6rem 0 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: center;
+        }
+
+        #main-content {
+            padding-top: 6rem;
+        }
+
+        .container {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+        .grid {
+        display: grid;
+        gap: 1.5rem;
+        }
+
+        .text-center {
+        text-align: center;
+        }
+
+        nav.nav {
+        position: absolute;
+        }
+
+        section.hero {
+        height: 100vh;
+        }
+
+        section.hero > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        height: 100%;
+        margin: 0 auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #lesson-form {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        #lesson-form input[type="text"] {
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            border: 1px solid #fff;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            min-width: 180px;
+        }
+
+        #lesson-list {
+            list-style: none;
+            padding-left: 0;
+            display: grid;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        #lesson-list li a {
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.6);
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            display: inline-block;
+        }
+
+        section.hero {
+        background-image: 
+            linear-gradient(45deg, rgb(0, 0, 0), rgb(25, 26, 39));
+        background-repeat: no-repeat;
+        
+        background-position: center;
+        background-size: cover;
+        }
+
+        nav.nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        color: #fff;
+        }
+
+        ul.nav--list {
+        display: flex;
+        }
+        li.nav--item {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        margin-left: 32px;
+        }
+
+        nav.nav {
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 40px;
+        }
+
+        .logo {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 29px;
+        }
+
+        li.nav--item a {
+        color: #fff;
+        }
+
+        li.nav--item a:hover {
+        text-decoration: underline;
+        }
+
+        h1.title {
+        font-weight: bold;
+        font-size: 72px;
+        line-height: 96px;
+        color: #fff;
+        margin-bottom: 34px;
+        }
+
+        .text-center {
+        text-align: center;
+        }
+
+        a.btn {
+        display: flex;
+        align-items: center;
+        padding: 16px 40px;
+        color: #fff;
+        border: 1px solid #ffffff;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #ffffff;
+        }
+
+        a.btn svg {
+        margin-left: 10px;
+        }
+
+        a.btn:hover {
+        background: #ffffff47;
+        }
+        .hamburger-menu {
+        display: none;
+        }
+        @media screen and (min-width: 768px) {
+            li.nav--item a {
+                display: inline-block;
+                position: relative;
+                text-decoration: none;
+            }
+            li.nav--item a:hover{
+                text-decoration: none;
+            }
+            li.nav--item a:after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 0;
+                bottom: 0;
+                height: 2px;
+                margin: -5px 0;
+                left: 0;
+                background-color: white;
+                transition: all 0.4s ease-in 0s;
+            }
+            li.nav--item a:hover:after {
+                width: 100%;
+            }
+        }
+        @media screen and (max-width: 768px) {
+        h1.title {
+            font-size: 32px;
+            line-height: 42px;
+        }
+        .hamburger-menu {
+            display: block;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 10001;
+        }
+        .hamburger-menu button {
+            position: relative;
+            width: 30px;
+            height: 22px;
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            outline: none;
+        }
+        .hamburger-menu button span {
+            position: absolute;
+            height: 3px;
+            background: #000;
+            width: 100%;
+            left: 0px;
+            top: 0px;
+            transition: 0.1s ease-in;
+        }
+        .hamburger-menu button span {
+            background: #fff;
+        }
+        .burger[data-state="open"] span {
+            background: #000;
+        }
+        .hamburger-menu button span:nth-child(2) {
+            top: 9px;
+        }
+        .hamburger-menu button span:nth-child(3) {
+            top: 18px;
+        }
+        .hamburger-menu [data-state="open"] span:first-child {
+            transform: rotate(45deg);
+            top: 10px;
+        }
+        .hamburger-menu [data-state="open"] span:nth-child(2) {
+            width: 0%;
+            opacity: 0;
+        }
+        .hamburger-menu [data-state="open"] span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 10px;
+        }
+
+        ul.nav--list {
+            position: absolute;
+            transition: all 0.5s;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-100%);
+        }
+        ul.nav--list li {
+            transition: all 0.9s;
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+
+        ul.nav--list[data-state="open"] {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+        ul.nav--list[data-state="open"] li {
+            transition-delay: 0.3s;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        ul.nav--list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+        }
+
+        li.nav--item {
+            margin: 14px;
+        }
+
+        li.nav--item a {
+            color: #000;
+            padding: 8px 20px;
+            border: 1px solid #000;
+            box-shadow: 3px 3px 0 0 currentColor;
+        }
+        }
+
+        @media screen and (min-width: 768px) {
+            a {
+                display: inline-block;
+                color: #ffffff;
+                position: relative;
+                text-decoration: none;
+            }
+            a:hover{
+                text-decoration: none;
+            }
+            a:after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 0;
+                bottom: 0;
+                height: 2px;
+                margin: -5px 0;
+                left: 0;
+                background-color: white;
+                transition: all 0.4s ease-in 0s;
+            }
+            a:hover:after {
+                width: 100%;
+            }
+        }
+    </style>
+    <title>Hero Section</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Stufy's LearnToCode</div>
+            <div class="hamburger-menu">
+                <button class="burger" data-state="closed">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            <ul class="nav--list" data-state="closed">
+                <li class="nav--item"><a href="/" class="link">Home</a> </li>
+                <li class="nav--item"><a href="/#choose-a-lang" class="link">Choose a language</a> </li>
+                <li class="nav--item"><a href="https://github.com/StuffzEZ/LearnToCode" class="link">GitHub ↗</a> </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main">
+        <section class="hero">
+            <div class="container">
+                <h1 class="title text-center">Stufy's HTML Course</h1>
+                <div class="hero-buttons">
+                    <a href="lesson1" class="btn">Lesson 1<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 7H17V17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#lessons" class="btn">View Lessons
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="lessons" class="section">
+            <div class="container">
+                <h2>Lesson Explorer</h2>
+                <p>ID, then click the Go button.</p>
+                <div id="lesson-form">
+                    <input id="lesson-label" type="text" placeholder="Lesson number" aria-label="Lesson title">
+                    <button id="add-lesson" class="btn" type="button">Go</button>
+                </div>
+                <ul id="lesson-list"></ul>
+                <h3>Choose a language</h3>
+                <p>Quick links to course sections:</p>
+                <a href="html">HTML</a>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav--list');
+        const addLessonButton = document.getElementById('add-lesson');
+        const lessonInput = document.getElementById('lesson-label');
+
+        burger.addEventListener('click', e => {
+        burger.dataset.state === 'closed' ? burger.dataset.state = "open" : burger.dataset.state = "closed";
+        nav.dataset.state === "closed" ? nav.dataset.state = "open" : nav.dataset.state = "closed";
+        });
+
+        addLessonButton.addEventListener('click', () => {
+            const lessonId = lessonInput.value.trim();
+            if (!lessonId) return;
+            const normalized = lessonId.replace(/\s+/g, '');
+            window.location.href = `lesson${encodeURIComponent(normalized)}`;
+        });
+    </script>
+</body>
+</html>

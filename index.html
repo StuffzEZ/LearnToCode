@@ -21,14 +21,20 @@
         margin: 0;
         font-family: "Inter", sans-serif;
         font-size: 20px;
-        color: #000;
+        color: #ffffff;
+        background-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(25, 26, 39));
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        min-height: 100vh;
+        text-align: center;
         }
 
         h1,
         h2,
         h3,
         h4 {
-        color: #000;
+        color: #ffffff;
         font-weight: 400;
         }
 
@@ -46,13 +52,22 @@
         }
 
         .section {
-        padding: 2rem 0 4rem;
+        min-height: 100vh;
+        padding: 6rem 0 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: center;
+        }
+
+        #main-content {
+            padding-top: 6rem;
         }
 
         .container {
-        max-width: 992px;
-        margin-left: 12px;
-        margin-right: 12px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
         }
 
         .grid {
@@ -83,8 +98,7 @@
 
         section.hero {
         background-image: 
-            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-            url("img/hero.jpg");
+            linear-gradient(45deg, rgb(0, 0, 0), rgb(25, 26, 39));
         background-repeat: no-repeat;
         
         background-position: center;
@@ -295,13 +309,40 @@
             box-shadow: 3px 3px 0 0 currentColor;
         }
         }
+
+        @media screen and (min-width: 768px) {
+            a {
+                display: inline-block;
+                color: #ffffff;
+                position: relative;
+                text-decoration: none;
+            }
+            a:hover{
+                text-decoration: none;
+            }
+            a:after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 0;
+                bottom: 0;
+                height: 2px;
+                margin: -5px 0;
+                left: 0;
+                background-color: white;
+                transition: all 0.4s ease-in 0s;
+            }
+            a:hover:after {
+                width: 100%;
+            }
+        }
     </style>
     <title>Hero Section</title>
 </head>
 <body>
     <header class="header">
         <nav class="nav">
-            <div class="logo">Logo</div>
+            <div class="logo">Stufy's LearnToCode</div>
             <div class="hamburger-menu">
                 <button class="burger" data-state="closed">
                   <span></span>
@@ -310,23 +351,29 @@
                 </button>
               </div>
             <ul class="nav--list" data-state="closed">
-                <li class="nav--item"><a href="#" class="link">Magazine</a> </li>
-                <li class="nav--item"><a href="#" class="link">World</a> </li>
-                <li class="nav--item"><a href="#" class="link">Tech</a> </li>
-                <li class="nav--item"><a href="#" class="link">Health</a> </li>
-                <li class="nav--item"><a href="#" class="link">Sport</a> </li>
+                <li class="nav--item"><a href="/" class="link">Home</a> </li>
+                <li class="nav--item"><a href="/#choose-a-lang" class="link">Choose a language</a> </li>
+                <li class="nav--item"><a href="https://github.com/StuffzEZ/LearnToCode" class="link">GitHub ↗</a> </li>
             </ul>
         </nav>
     </header>
     <div class="main">
         <section class="hero">
             <div class="container">
-                <h1 class="title text-center">Elegant Landing Pages for your next project</h1>
-                <a href="#" class="btn">Explore more <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <h1 class="title text-center">Learn To Code easily, for free</h1>
+                <a href="#choose-a-lang" class="btn">Explore more <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7 17L17 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M7 7H17V17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     </a>
+            </div>
+        </section>
+        <section id="choose-a-lang" class="section">
+            <div class="container">
+                <h2>What language would you like to learn?</h2>
+                <p>Choose a language from the list below.</p>
+                <br>
+                <a href="html">HTML</a>
             </div>
         </section>
     </div>
